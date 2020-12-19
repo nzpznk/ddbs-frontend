@@ -16,7 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "element-ui": "^2.14.1",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

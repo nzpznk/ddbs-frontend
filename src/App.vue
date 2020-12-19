@@ -1,15 +1,21 @@
+
+
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <el-button @click="startHacking">Start</el-button>
-      <el-checkbox v-model="checked">备选项</el-checkbox>
-    </div>
+    <Navbar
+      @pageChange="updatePage"></Navbar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Navbar from './Navbar.vue'
+import Daily from './Daily.vue'
+
 export default {
+  components: {
+    Navbar
+  },
   methods: {
     startHacking () {
       this.$notify({
@@ -18,6 +24,35 @@ export default {
         message: 'We\'ve laid the ground work for you. It\'s time for you to build something epic!',
         duration: 5000
       })
+    }, 
+    updatePage(data) {
+      console.log('updating page...');
+      console.log(data);
+      switch (data.keyPath[0]) {
+        case '1':
+          console.log('每日')
+          break;
+        case '2':
+          console.log('每周')
+          break;
+        case '3':
+          console.log('每月')
+          break;
+        case '4':
+          console.log('随机')
+          break;
+        case '5':
+          if (data.keyPath[1] == '5-1') {
+            console.log('已读')
+          } else if (data.keyPath[1] == '5-2') {
+            console.log('已赞')
+          } else if (data.keyPath[1] == '5-3') {
+            console.log('分享')
+          } else {
+            console.log('未知标签')
+          }
+          break;
+      }
     }
   }, 
   data() {
