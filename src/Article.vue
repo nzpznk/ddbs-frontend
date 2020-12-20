@@ -2,7 +2,7 @@
   <div>
     <h1>{{briefDat.title}}</h1>
     <p>{{briefDat.authors}}</p>
-    <el-row>
+    <el-row style="margin: 20px">
       <el-popover
         placement="bottom"
         title="读过的用户"
@@ -48,16 +48,25 @@
         </el-tag>
       </el-popover>
     </el-row>
-    <p class="articletext">{{maintext}}</p>
-    <el-row>
-    <el-col style="padding: 10px" span="8" v-for="img in imglist" :key="img">
-      <el-card :body-style="{ padding: '0px' }">
-        <img :src="img" class="image"/>
-        <div class="clearfix">
-          <span> {{img}} </span>
-        </div>
-      </el-card>
-    </el-col>
+    <el-row v-if="videosrc">
+      <a :href="videosrc">视频下载链接</a>
+    </el-row>
+    <el-row style="width: 1000px; margin: auto">
+      <el-carousel type="card" :interval="4000" height="300px">
+        <el-carousel-item v-for="img in imglist" :key="img">
+          <!-- <h3 class="medium">{{ img }}</h3> -->
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image 
+              :src="img"
+              :fit="cover" 
+              class="medium image"></el-image>
+            <div class="clearfix"> <span> {{img}} </span> </div>
+          </el-card>
+        </el-carousel-item>
+      </el-carousel>
+    </el-row>
+    <el-row style="width: 1000px; margin: auto">
+      <p class="articletext">{{maintext}}</p>
     </el-row>
   </div>
 </template>
@@ -70,6 +79,7 @@ export default {
       maintext: undefined,
       briefDat: {title: undefined},
       imglist: undefined,
+      videosrc: "",
       readNum: 0,
       commentNum: 0,
       agreeNum: 0,
@@ -94,7 +104,8 @@ export default {
       }}).then(resp => resp.json());
       console.log('briefDat:', this.briefDat);
       this.imglist = this.briefDat['image'].slice(0, -1).split(',').map((v, i, arr) => { return '/api/image/' + v; });
-      console.log(this.imglist)
+      console.log(this.imglist);
+      this.videosrc = this.briefDat['video'] ? ('/api/video/' + this.briefDat['video']) : '';
     },
     async getTextData(aid) {
       this.maintext = await fetch('/api/text/'+aid, {method: 'GET'}).then(resp => resp.text());
@@ -121,8 +132,9 @@ export default {
   word-break: break-all;
 }
 .image {
-  width: 100%;
+  height: 260px;
   display: block;
+  margin: auto;
 }
 .clearfix:before,
 .clearfix:after {
@@ -132,4 +144,5 @@ export default {
 .clearfix:after {
     clear: both
 }
+
 </style>
