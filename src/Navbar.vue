@@ -10,7 +10,7 @@
     <el-menu-item index="1"><router-link to="/daily">每日热门文章</router-link></el-menu-item>
     <el-menu-item index="2"><router-link to="/weekly">每周热门文章</router-link></el-menu-item>
     <el-menu-item index="3"><router-link to="/monthly">每月热门文章</router-link></el-menu-item>
-    <el-menu-item index="4"><router-link to="/random">随机推荐</router-link></el-menu-item>
+    <el-menu-item index="4"><router-link to="/randomly">随机推荐</router-link></el-menu-item>
     <el-submenu index="5">
       <template slot="title">我的</template>
       <el-menu-item index="5-1"><router-link to="readed">已读</router-link></el-menu-item>

@@ -20,8 +20,8 @@ var router = new VueRouter({
         {path: '/article', component: Article},
         {path: '/daily', component: ArticleBrief, props: {granularity: 'daily'}},
         {path: '/weekly', component: ArticleBrief, props: {granularity: 'weekly'}},
-        {path: '/monthly', component: ArticleBrief, props: {granularity: 'monthly'}}
-        // {path: '/randomly', component: Randomly}
+        {path: '/monthly', component: ArticleBrief, props: {granularity: 'monthly'}},
+        {path: '/randomly', component: ArticleBrief, props: {granularity: 'randomly'}}
     ]
 });
 
