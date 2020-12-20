@@ -11,6 +11,14 @@ export default {
       tableData: []
     }
   },
+  props: {
+    granularity: String
+  },
+  watch: {
+    granularity: function(oldval, newval) {
+      this.getTableData();
+    }
+  },
   mounted() {
     this.getTableData();
   },
@@ -19,7 +27,7 @@ export default {
   },
   methods: {
     async getTableData() {
-      const aidlist = (await fetch('/api/top5', {method: 'POST', body: JSON.stringify({period:'daily'}), headers: {
+      const aidlist = (await fetch('/api/top5', {method: 'POST', body: JSON.stringify({period:this.granularity}), headers: {
         'content-type': 'application/json'
       }}).then(res => res.json()))['articleAidList'];
       const fetchlist = aidlist.map((aid,idx,arr) => {

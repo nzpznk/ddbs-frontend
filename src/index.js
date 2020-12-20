@@ -7,18 +7,21 @@ import VueRouter from 'vue-router'
 Vue.use(ElementUI);
 Vue.use(VueRouter);
 
-import Daily from'./Daily.vue'
+import ArticleBrief from'./ArticleBrief.vue'
 import Article from './Article.vue'
 
-Vue.component('daily', Daily)
+Vue.component('articlebrief', ArticleBrief)
 Vue.component('article', Article)
 
 var router = new VueRouter({
     mode: 'hash',
     routes: [
-        {path: '/', component: Daily}, 
-        {path: '/daily', component: Daily},
-        {path: '/article', component: Article}
+        {path: '/', component: ArticleBrief, props: {granularity: 'daily'}}, 
+        {path: '/article', component: Article},
+        {path: '/daily', component: ArticleBrief, props: {granularity: 'daily'}},
+        {path: '/weekly', component: ArticleBrief, props: {granularity: 'weekly'}},
+        {path: '/monthly', component: ArticleBrief, props: {granularity: 'monthly'}}
+        // {path: '/randomly', component: Randomly}
     ]
 });
 

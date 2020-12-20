@@ -10,7 +10,6 @@
 
 <script>
 import Navbar from './Navbar.vue'
-import Daily from './Daily.vue'
 
 export default {
   components: {
