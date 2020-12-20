@@ -3,7 +3,7 @@
   <el-table
     :data="currentPageContents"
     style="width: 100%">
-    <el-table-column prop="date" label="日期" width="180"></el-table-column>
+    <el-table-column prop="timestamp" label="日期" width="180"></el-table-column>
     <el-table-column prop="title" label="题目" width="180"></el-table-column>
     <el-table-column prop="category" label="类别"></el-table-column>
     <el-table-column prop="authors" label="作者"></el-table-column>

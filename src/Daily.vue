@@ -25,7 +25,12 @@ export default {
       const fetchlist = aidlist.map((aid,idx,arr) => {
         return fetch('/api/article', {method: 'POST', body: JSON.stringify({aid: aid}), headers:{
           'content-type': 'application/json'
-        }}).then(res => res.json());
+        }})
+        .then(res => res.json())
+        .then(res => {
+          res.timestamp = (new Date(Number(res.timestamp))).toString();
+          return res;
+        });
       });
       this.tableData = await Promise.all(fetchlist);
       console.log(this.tableData);
