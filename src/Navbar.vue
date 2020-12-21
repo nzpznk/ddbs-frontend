@@ -61,7 +61,12 @@
     },
     methods: {
       searchUser() {
-        this.$router.push({path: 'searchuser', query: {uid: this.uidforsearch}})
+        const req_path = '/user/' + this.uidforsearch;
+        if (this.$route.fullPath == req_path) {
+          console.log('no need to reload user page');
+        } else {
+          this.$router.push({path: req_path});
+        }
       },
       searchArticle() {
         const req_path = '/article/' + this.aidforsearch;

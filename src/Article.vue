@@ -51,6 +51,7 @@
     <el-row v-if="videosrc">
       <a :href="videosrc">视频下载链接</a>
     </el-row>
+    <video id="videoElement"></video>
     <el-row style="width: 1000px; margin: auto">
       <el-carousel type="card" :interval="4000" height="300px">
         <el-carousel-item v-for="img in imglist" :key="img">
@@ -72,6 +73,7 @@
 </template>
 
 <script>
+import flvjs from 'flv.js'
 export default {
   data() {
     return {
@@ -95,10 +97,36 @@ export default {
       this.aid = this.$route.params.aid;
       this.fetchArticleData(this.aid);
     }
+    // videosrc: function(oldval, newval) {
+    //   if (!newval) {
+    //     console.log('videosrc is empty str');
+    //     return;
+    //   }
+    //   if (flvjs.isSupported()) {
+    //     var videoElement = document.getElementById('videoElement');
+    //     var flvPlayer = flvjs.createPlayer({
+    //         type: 'flv',
+    //         url: '/api/video/video_a30_video.flv'
+    //     });
+    //     flvPlayer.attachMediaElement(videoElement);
+    //     flvPlayer.load();
+    //     flvPlayer.play();
+    //   }
+    // }
   },
   mounted() {
     this.aid = this.$route.params.aid;
     this.fetchArticleData(this.aid);
+    if (flvjs.isSupported()) {
+      var videoElement = document.getElementById('videoElement');
+      var flvPlayer = flvjs.createPlayer({
+          type: 'flv',
+          url: '/api/video/video_a30_video.flv'
+      });
+      flvPlayer.attachMediaElement(videoElement);
+      flvPlayer.load();
+      flvPlayer.play();
+    }
   },
   methods: {
     async fetchArticleData(aid) {

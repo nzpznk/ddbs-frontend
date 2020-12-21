@@ -9,20 +9,22 @@ Vue.use(VueRouter);
 
 import ArticleBrief from'./ArticleBrief.vue'
 import Article from './Article.vue'
+import UserSearch from './UserSearch.vue'
 
 Vue.component('articlebrief', ArticleBrief)
 Vue.component('article', Article)
+Vue.component('userSearch', UserSearch)
 
 var router = new VueRouter({
     mode: 'hash',
     routes: [
         {path: '/', component: ArticleBrief, props: {granularity: 'daily'}}, 
         {path: '/article/:aid', component: Article},
+        {path: '/user/:uid', component: UserSearch},
         {path: '/daily', component: ArticleBrief, props: {granularity: 'daily'}},
         {path: '/weekly', component: ArticleBrief, props: {granularity: 'weekly'}},
         {path: '/monthly', component: ArticleBrief, props: {granularity: 'monthly'}},
-        {path: '/randomly', component: ArticleBrief, props: {granularity: 'randomly'}},
-        // {path: '/searchuser', component: },
+        {path: '/randomly', component: ArticleBrief, props: {granularity: 'randomly'}}
     ]
 });
 
