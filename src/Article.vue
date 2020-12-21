@@ -96,6 +96,11 @@ export default {
     '$route' (oldval, newval) {
       this.aid = this.$route.params.aid;
       this.fetchArticleData(this.aid);
+      if (this.flvPlayer) {
+        console.log('removing flv player...');
+        this.flvPlayer.unload();
+        this.flvPlayer = undefined;
+      }
     }
   },
   mounted() {
