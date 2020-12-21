@@ -17,11 +17,12 @@ var router = new VueRouter({
     mode: 'hash',
     routes: [
         {path: '/', component: ArticleBrief, props: {granularity: 'daily'}}, 
-        {path: '/article', component: Article},
+        {path: '/article/:aid', component: Article},
         {path: '/daily', component: ArticleBrief, props: {granularity: 'daily'}},
         {path: '/weekly', component: ArticleBrief, props: {granularity: 'weekly'}},
         {path: '/monthly', component: ArticleBrief, props: {granularity: 'monthly'}},
-        {path: '/randomly', component: ArticleBrief, props: {granularity: 'randomly'}}
+        {path: '/randomly', component: ArticleBrief, props: {granularity: 'randomly'}},
+        // {path: '/searchuser', component: },
     ]
 });
 

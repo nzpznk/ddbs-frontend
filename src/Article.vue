@@ -90,8 +90,14 @@ export default {
       shareList: ""
     }
   },
+  watch: {
+    '$route' (oldval, newval) {
+      this.aid = this.$route.params.aid;
+      this.fetchArticleData(this.aid);
+    }
+  },
   mounted() {
-    this.aid = this.$route.query.aid;
+    this.aid = this.$route.params.aid;
     this.fetchArticleData(this.aid);
   },
   methods: {
@@ -144,5 +150,4 @@ export default {
 .clearfix:after {
     clear: both
 }
-
 </style>

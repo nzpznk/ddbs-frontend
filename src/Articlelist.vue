@@ -53,7 +53,7 @@ export default {
     handleDetail(idx) {
       idx = idx + this.pageIndex * this.pageSize;
       let briefDat = this.tableData[idx]
-      this.$router.push({path: 'article', query: {aid: briefDat['aid']}})
+      this.$router.push({path: '/article/'+ briefDat['aid']})
     }
   }
 }
