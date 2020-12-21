@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack serve --config webpack.config.js --progress --watch --content-base src/",
-    "build": "rimraf dist && webpack -p --progress --hide-modules",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

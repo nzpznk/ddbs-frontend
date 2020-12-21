@@ -6,7 +6,7 @@
         class="el-menu-whole"
         mode="horizontal"
         @select="handleSelect"
-        background-color="#545c64"
+        background-color="#660874"
         text-color="#fff"
         active-text-color="#ffd04b">
         <el-menu-item index="1"><router-link to="/daily">每日热门文章</router-link></el-menu-item>
@@ -55,8 +55,8 @@
     data() {
       return {
         activeIndex: '1',
-        uidforsearch: '233',
-        aidforsearch: '123'
+        uidforsearch: '',
+        aidforsearch: ''
       };
     },
     methods: {
@@ -91,13 +91,13 @@
 .searchbox {
   padding: 3px;
   margin: auto;
-  background-color: #545C64;
+  background-color: #660874;
 }
 .el-menu-whole {
   border-bottom:none
 }
 .navbar {
-  background-color: #545C64;
+  background-color: #660874;
 }
 .searchbtn {
   display: flex

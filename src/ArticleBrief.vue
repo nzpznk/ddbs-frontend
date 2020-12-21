@@ -1,6 +1,10 @@
 <template>
+<div>
+  <h2>文章列表</h2>
   <Articlelist
+    class="articlelist"
     :tableData="tableData"></Articlelist>
+</div>
 </template>
 
 <script>
@@ -46,3 +50,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.articlelist {
+  width: 1000px;
+  margin: auto;
+}
+</style>

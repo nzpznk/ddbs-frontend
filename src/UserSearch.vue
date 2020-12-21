@@ -2,7 +2,7 @@
 <div>
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <span>用户名：{{userdat.name}}</span>
+      <span>{{userdat.name}} 基本信息</span>
     </div>
     <table style="margin:auto">
       <tr v-for="(v, k) in userdat" :key="(v, k)" class="text item">
